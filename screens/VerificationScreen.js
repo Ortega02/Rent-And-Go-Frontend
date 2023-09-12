@@ -4,9 +4,10 @@ import CustomInput from '../components/Input'
 import Button from '../components/Button'
 import { useNavigation } from '@react-navigation/native';
 
-const ForgotPass = () => {
 
-    const [correo, setCorreo] = useState('');
+const Verification = () => {
+
+    const [codigo, setCodigo] = useState('');
 
     const navigation = useNavigation();
 
@@ -15,7 +16,7 @@ const ForgotPass = () => {
     
     }
 
-    const send = () => {
+    const check = () => {
         navigation.navigate('Verification');
     }
 
@@ -23,23 +24,22 @@ const ForgotPass = () => {
         <ScrollView>
             <View style={styles.root}>
                 <Button
-                    onPress={goback}                
+                    onPress={goback}
                     icononame="chevron-left"
                     size={40}
                 />
-                <Text style={styles.texto}>¿Olvidaste tu Contraseña?</Text>
-                <Text style={styles.texto2}>Ingresa tu correo electrónico para poder enviarte un código verificación</Text>
+                <Text style={styles.texto}>Código de Verificación</Text>
+                <Text style={styles.texto2}>Te hemos enviado un código, revisa tu correo</Text>
 
                 <CustomInput
-                    placeholder="Correo electrónico"
-                    value={correo}
-                    setValue={setCorreo}
-                    icononame="envelope"
+                    placeholder="Ingresa tu código"
+                    value={codigo}
+                    setValue={setCodigo}
                 />
 
                 <Button 
-                    text="Enviar Código"
-                    onPress={send}
+                    text="Verificar"
+                    onPress={check}
                     type="PRIMARY"
                     size={350} />
             </View>
@@ -67,12 +67,11 @@ const styles = StyleSheet.create({
         marginTop: 8,
         textAlign: 'center',
         paddingBottom: 5,
-        marginBottom:15,
-        flexWrap: 'wrap',
+        marginBottom:15
     },
    
 
 });
 
 
-export default ForgotPass;
+export default Verification;

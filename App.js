@@ -11,6 +11,7 @@ import ReservationsScreen from "./screens/ReservationsScreen";
 import ForgotPassScreen from "./screens/ForgotPassScreen";
 import AccountScreen from "./screens/AccountScreen";
 import FilterScreen from "./screens/FilterScreen";
+import VerificationScreen from "./screens/VerificationScreen";
 import { StatusBar } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { AppProvider } from "./AppContext";
@@ -84,6 +85,11 @@ const App = () => {
           <Stack.Screen 
             name="Forgot" 
             component={ForgotPassScreen} 
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen 
+            name="Verification" 
+            component={VerificationScreen} 
             options={{ headerShown: false }}
           />
             <Stack.Screen 
