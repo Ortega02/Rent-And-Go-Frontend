@@ -1,30 +1,31 @@
-import { View, Text, Image, StyleSheet, ScrollView, TextInput } from 'react-native'
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native'
 import React, { useState } from 'react';
+import Logo from '../assets/img/logo.jpg';
 import CustomInput from '../components/Input'
 import Button from '../components/Button'
 import { useNavigation } from '@react-navigation/native';
 
 
-const Login = () => {
-    {/*capturando valores*/ }
+const SignInScreen = () => {
     const [correo, setCorreo] = useState('');
     const [contra, setContra] = useState('');
-    const [nombre, setnombre] = useState('');
-    const [apellido, setapellido] = useState('');
-    const [numero, setnumero] = useState('');
-    const [DUI, setDUI] = useState('');
-
     const [isContraVisible, setContraVisible] = useState(false);
-
     const navigation = useNavigation();
 
-    {/*eventos botones */ }
-    const RegistroPress = () => {
-        navigation.navigate('SignInScreen');
+    const SignInPress = () => {
+        navigation.navigate('HomeTab');
     }
 
-    const SingInPress = () => {
-        navigation.navigate('SignInScreen');
+    const ForgotPress = () => {
+        navigation.navigate('Forgot');
+    }
+
+    const LogInPress = () => {
+        navigation.navigate('SignUp');
+    }
+
+    const Google = () => {
+        console.warn("Registrate con Google")
     }
 
     const ContraVisibility = () => {
@@ -35,99 +36,88 @@ const Login = () => {
     return (
         <ScrollView>
             <View style={styles.root}>
-                <Text style={styles.texto}>Crea tu cuenta</Text>
-                <Text style={styles.texto2}>¡Registrate y comienza el viaje!</Text>
-
-                <Text style={styles.texto3}>Correo Electrónico</Text>
+                <Image source={Logo} style={styles.logo} resizeMode='contain' />
+                <Text style={styles.texto}>Bienvenido de nuevo</Text>
+                <Text style={styles.texto2}>Ingresa a tu cuenta utilizando tu correo electrónico registrado</Text>
                 <CustomInput
-                    placeholder="Ingresa tu correo electrónico"
+                    placeholder="Correo electrónico"
                     value={correo}
                     setValue={setCorreo}
-
+                    icononame="envelope"
                 />
-                <Text style={styles.texto3}>Nombre</Text>
-                <CustomInput
-                    placeholder="Ingresa tu Nombre"
-                    value={nombre}
-                    setValue={setnombre}
-
-                />
-                <Text style={styles.texto3}>Apellido</Text>
-                <CustomInput
-                    placeholder="Ingresa tu Apellido"
-                    value={apellido}
-                    setValue={setapellido}
-
-                />
-                <Text style={styles.texto3}>DUI</Text>
-                <CustomInput
-                    placeholder="Ingresa tu DUI"
-                    value={DUI}
-                    setValue={setDUI}
-                    //teclado de numeros
-                    keyboardtype='phone-pad'
-
-                />
-                <Text style={styles.texto3}>Número de teléfono</Text>
-                <CustomInput
-                    placeholder="+503 | Ingresa tu número de teléfono"
-                    value={numero}
-                    setValue={setnumero}
-                    //teclado de numeros
-                    keyboardtype='phone-pad'
-                    />
-               
-                <Text style={styles.texto3}>Contraseña</Text>
 
                 <CustomInput
                     placeholder="Contraseña"
                     value={contra}
                     setValue={setContra}
                     secureTextEntry={!isContraVisible}
+                    icononame="lock" 
                     iconpassword={isContraVisible ? 'eye' : 'eye-slash'}
-                    onPress={ContraVisibility} />
+                    onPress={ContraVisibility}/>
                 <Button
-                    text="Registrarse"
-                    onPress={RegistroPress}
+                    text="¿Olvidaste tu contraseña?"
+                    onPress={ForgotPress}
+                    type="TERTIARY" />
+
+                <Button
+                    text="Ingresar"
+                    onPress={SignInPress}
                     type="PRIMARY"
-                    size={350} />
+                    size={350}/>
 
                 <Button
-                    text=" ¿Ya tienes una cuenta? Ingresar"
-                    onPress={SingInPress} type="TERTIARY" />
+                    text=" ¿Primera vez por aquí? Registrate"
+                    onPress={LogInPress} type="TERTIARY" />
 
+                <Text style={styles.texto3}>O ingresa con</Text>
 
+                <Button
+                    text="Google"
+                    onPress={Google}
+                    bgcolor="#e3e3e3"
+                    fgcolor="#363636"
+                    icononame="google"
+                    size={150} />
 
-
-                </View>
+            </View>
         </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     root: {
+        alignItems: 'center',
         justifyContent: 'flex-start', //la sube
         padding: 20,
         height: '100%',
-        marginTop: 25,
+        marginTop: 200,
+    },
+    logo: {
+        width: 300,
+        height: 100,
+        maxWidth: 300,
+
     },
     texto: {
-        fontSize: 25,
+        fontSize: 18,
         fontWeight: 'bold',
     },
     texto2: {
-        fontSize: 15,
+        fontSize: 11,
         color: 'gray',
+        flexWrap: 'wrap',
+        maxWidth: '50%',
         marginTop: 8,
-        textAlign: 'left',
-        paddingBottom: 5,
+        textAlign: 'center',
     },
     texto3: {
-        color: '#4D4DFF',
-        fontSize: 13,
-        marginTop: 10
+        color: '#2C2B2D',
+        fontSize: 16,
+        marginBottom: 10,
+        marginTop: 20,
+
     },
-    
+
 });
 
-export default Login;
+export default SignInScreen;

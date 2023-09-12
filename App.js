@@ -3,10 +3,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import SplashScreen from "./screens/SplashScreen";
-import SignInScreen from "./screens/SignInScreen";
+import SignUpScreen from "./screens/SignUpScreen";
 import HomeScreen from "./screens/HomeScreen";
 import FavoritesScreen from "./screens/FavoritesScreen";
-import LoginScreen from "./screens/LoginScreen";
+import LogInScreen from "./screens/LogInScreen";
 import ReservationsScreen from "./screens/ReservationsScreen";
 import ForgotPassScreen from "./screens/ForgotPassScreen";
 import AccountScreen from "./screens/AccountScreen";
@@ -77,8 +77,8 @@ const App = () => {
             options={{ headerShown: false }}
           />
           <Stack.Screen
-            name="SignInScreen"
-            component={SignInScreen}
+            name="LogIn"
+            component={LogInScreen}
             options={{ headerShown: false }}
           />
           <Stack.Screen 
@@ -87,8 +87,8 @@ const App = () => {
             options={{ headerShown: false }}
           />
             <Stack.Screen 
-            name="LogIn" 
-            component={LoginScreen} 
+            name="SignUp" 
+            component={SignUpScreen} 
             options={{ headerShown: false }}
           />
           <Stack.Screen
