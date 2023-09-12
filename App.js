@@ -6,7 +6,7 @@ import SplashScreen from "./screens/SplashScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import HomeScreen from "./screens/HomeScreen";
 import FavoritesScreen from "./screens/FavoritesScreen";
-import LogInScreen from "./screens/LogInScreen";
+import LogInScreen from "./screens/SignInScreen";
 import ReservationsScreen from "./screens/ReservationsScreen";
 import ForgotPassScreen from "./screens/ForgotPassScreen";
 import AccountScreen from "./screens/AccountScreen";
@@ -15,6 +15,7 @@ import VerificationScreen from "./screens/VerificationScreen";
 import { StatusBar } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { AppProvider } from "./AppContext";
+import SignInScreen from "./screens/SignInScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -78,8 +79,8 @@ const App = () => {
             options={{ headerShown: false }}
           />
           <Stack.Screen
-            name="LogIn"
-            component={LogInScreen}
+            name="SignIn"
+            component={SignInScreen}
             options={{ headerShown: false }}
           />
           <Stack.Screen 
