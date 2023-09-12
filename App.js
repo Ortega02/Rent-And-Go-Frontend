@@ -6,6 +6,7 @@ import SplashScreen from "./screens/SplashScreen";
 import SignInScreen from "./screens/SignInScreen";
 import HomeScreen from "./screens/HomeScreen";
 import FavoritesScreen from "./screens/FavoritesScreen";
+import LoginScreen from "./screens/LoginScreen";
 import ReservationsScreen from "./screens/ReservationsScreen";
 import AccountScreen from "./screens/AccountScreen";
 import FilterScreen from "./screens/FilterScreen";
@@ -79,6 +80,11 @@ const App = () => {
             component={SignInScreen}
             options={{ headerShown: false }}
           />
+            <Stack.Screen 
+            name="LogIn" 
+            component={LoginScreen} 
+            options={{ headerShown: false }}
+          />
           <Stack.Screen
             name="HomeTab"
             component={HomeTab}
@@ -89,6 +95,7 @@ const App = () => {
             component={FilterScreen} 
             options={{ headerShown: false }}
           />
+
         </Stack.Navigator>
       </NavigationContainer>
     </AppProvider>
