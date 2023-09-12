@@ -17,7 +17,7 @@ const Verification = () => {
     }
 
     const check = () => {
-        navigation.navigate('Verification');
+        navigation.navigate('NewPass');
     }
 
     return (
