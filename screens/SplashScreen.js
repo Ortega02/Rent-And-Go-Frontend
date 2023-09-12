@@ -20,7 +20,7 @@ const SplashScreen = ({ navigation }) => {
 
     // Navegar a la siguiente pantalla después de 4 segundos
     setTimeout(() => {
-      navigation.replace('SignInScreen');
+      navigation.replace('LogIn');
     }, 4000);
   }, [navigation, textAnim]);
 
