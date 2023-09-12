@@ -17,7 +17,7 @@ const SignInScreen = () => {
     }
 
     const ForgotPress = () => {
-        console.warn("Olvidaste contraseña")
+        navigation.navigate('Forgot');
     }
 
     const LogInPress = () => {
