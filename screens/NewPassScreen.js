@@ -18,7 +18,7 @@ const NewPass = () => {
     }
 
     const change = () => {
-        console.warn("Cambiar Contraseña")
+        navigation.navigate('PassChanged');
     }
 
     const ContraVisibility = () => {
