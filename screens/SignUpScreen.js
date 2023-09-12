@@ -20,11 +20,11 @@ const Login = () => {
 
     {/*eventos botones */ }
     const RegistroPress = () => {
-        navigation.navigate('LogIn');
+        navigation.navigate('SignIn');
     }
 
     const SingInPress = () => {
-        navigation.navigate('LogIn');
+        navigation.navigate('SignIn');
     }
 
     const ContraVisibility = () => {
