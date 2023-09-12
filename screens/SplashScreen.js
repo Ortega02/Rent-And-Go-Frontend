@@ -28,7 +28,7 @@ const SplashScreen = ({ navigation }) => {
     <View style={tw`flex-1 justify-center items-center`}>
       <LottieView
         ref={lottieAnim}
-        source={require('../assets/car2.json')}
+        source={require('../assets/splash.json')}
         autoPlay
         loop
         style={tw`w-[100] h-[100]`}
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   textContainer: {
     alignItems: 'center',
     position: 'absolute',
-    bottom: 300, // Ajusta el valor según tus necesidades para la distancia vertical
+    bottom: 200, // Ajusta el valor según tus necesidades para la distancia vertical
   },
   text: {
     fontSize: 32,
