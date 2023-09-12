@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, TextInput, StyleSheet, Image, Button, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const Input = ({ value, setValue, placeholder, secureTextEntry, icononame, iconpassword, onPress }) => {
+const Input = ({ value, setValue, placeholder, secureTextEntry, icononame, iconpassword, onPress, keyboardtype }) => {
   return (
     <View style={styles.container}>
       <Icon name={icononame} style={styles.icon} />
@@ -11,6 +11,7 @@ const Input = ({ value, setValue, placeholder, secureTextEntry, icononame, iconp
         onChangeText={setValue}
         placeholder={placeholder}
         style={styles.input}
+        keyboardType={keyboardtype}
         secureTextEntry={secureTextEntry} />
       <TouchableOpacity onPress={onPress}>
         <Icon
@@ -28,9 +29,9 @@ const styles = StyleSheet.create({
     width: '100%',
     borderColor: '#e8e8e8',
     borderWidth: 1,
-    borderRadius: 8,
+    borderRadius: 9,
     paddingHorizontal: 16,
-    marginTop: 20,
+    marginTop: 10,
     flexDirection: 'row',
     alignItems: 'center',
   },
