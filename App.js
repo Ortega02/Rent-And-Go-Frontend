@@ -8,6 +8,7 @@ import HomeScreen from "./screens/HomeScreen";
 import FavoritesScreen from "./screens/FavoritesScreen";
 import LoginScreen from "./screens/LoginScreen";
 import ReservationsScreen from "./screens/ReservationsScreen";
+import ForgotPassScreen from "./screens/ForgotPassScreen";
 import AccountScreen from "./screens/AccountScreen";
 import FilterScreen from "./screens/FilterScreen";
 import { StatusBar } from "react-native";
@@ -78,6 +79,11 @@ const App = () => {
           <Stack.Screen
             name="SignInScreen"
             component={SignInScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen 
+            name="Forgot" 
+            component={ForgotPassScreen} 
             options={{ headerShown: false }}
           />
             <Stack.Screen 
