@@ -12,6 +12,7 @@ import ForgotPassScreen from "./screens/ForgotPassScreen";
 import AccountScreen from "./screens/AccountScreen";
 import FilterScreen from "./screens/FilterScreen";
 import VerificationScreen from "./screens/VerificationScreen";
+import NewPassScreen from "./screens/NewPassScreen";
 import { StatusBar } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { AppProvider } from "./AppContext";
@@ -91,6 +92,11 @@ const App = () => {
           <Stack.Screen 
             name="Verification" 
             component={VerificationScreen} 
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen 
+            name="NewPass" 
+            component={NewPassScreen} 
             options={{ headerShown: false }}
           />
             <Stack.Screen 
