@@ -1,31 +1,48 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Image, StyleSheet, Animated } from 'react-native';
+import { View, Image, StyleSheet, Animated, Text } from 'react-native';
+import LottieView from 'lottie-react-native';
+import tw from 'twrnc';
 
 const SplashScreen = ({ navigation }) => {
-  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const lottieAnim = useRef(null);
+  const textAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    // Add animation logic here
-    Animated.timing(fadeAnim, {
+    // Iniciar la animación de la animación Lottie
+    lottieAnim.current.play();
+
+    // Animación de entrada del texto (fade in)
+    Animated.timing(textAnim, {
       toValue: 1,
-      duration: 2000, // Adjust the duration as needed
+      duration: 3000, // Duración de la animación de fade in
       useNativeDriver: true,
     }).start();
 
-    // After the animation or any necessary initialization, navigate to the main screen
+    // Navegar a la siguiente pantalla después de 4 segundos
     setTimeout(() => {
-      navigation.replace('SignInScreen'); // Replace 'MainScreen' with your main screen name
-    }, 4000); // Adjust the time (in milliseconds) as needed
-  }, [fadeAnim, navigation]);
+      navigation.replace('SignInScreen');
+    }, 4000);
+  }, [navigation, textAnim]);
 
   return (
-    <View style={styles.container}>
-      <Animated.Image
-  source={require('../assets/img/splash.png')}
-  style={[styles.image, { opacity: fadeAnim }]}
-  resizeMode="contain" // O prueba otros valores como "cover" o "stretch"
-/>
-
+    <View style={tw`flex-1 justify-center items-center`}>
+      <LottieView
+        ref={lottieAnim}
+        source={require('../assets/car2.json')}
+        autoPlay
+        loop
+        style={tw`w-[100] h-[100]`}
+      />
+      <Animated.View
+        style={[
+          styles.textContainer,
+          {
+            opacity: textAnim,
+          },
+        ]}
+      >
+        <Text style={styles.text}>Rent & Go</Text>
+      </Animated.View>
     </View>
   );
 };
@@ -36,14 +53,19 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-    // Aumenta el tamaño del contenedor
-    width: '100%', // Puedes usar '100%' para que ocupe todo el ancho de la pantalla
-    height: '100%', // Puedes usar '100%' para que ocupe todo el alto de la pantalla
+    width: '100%',
+    height: '100%',
   },
-  
-  image: {
-    width: 300, // Set the width of your image
-    height: 300, // Set the height of your image
+  textContainer: {
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 300, // Ajusta el valor según tus necesidades para la distancia vertical
+  },
+  text: {
+    fontSize: 32,
+    fontFamily: 'Helvetica Neue',
+    fontWeight: 'bold',
+    color: 'black',
   },
 });
 
