@@ -21,7 +21,7 @@ const SignInScreen = () => {
     }
 
     const LogInPress = () => {
-        console.warn("Registrate")
+        navigation.navigate('LogIn');
     }
 
     const Google = () => {
