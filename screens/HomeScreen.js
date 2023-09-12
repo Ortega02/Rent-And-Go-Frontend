@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import {
   View,
   ScrollView,
@@ -11,16 +11,32 @@ import {
 import Icon from "react-native-vector-icons/FontAwesome"; // Asegúrate de importar FontAwesome o la fuente de iconos que desees
 import Carros from "../Carros";
 import { useAppContext } from '../AppContext';
+import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
   const { favoriteVehicles, toggleFavorite } = useAppContext();
   const [searchText, setSearchText] = useState(""); // Estado para el texto de búsqueda
-
+  const navigation = useNavigation();
+  
   // Función para filtrar los vehículos según el texto de búsqueda
   const filteredVehicles = Carros.filter((vehicle) =>
-    vehicle.brand.toLowerCase().includes(searchText.toLowerCase())
+  vehicle.brand.toLowerCase().includes(searchText.toLowerCase()) ||
+  vehicle.model.toLowerCase().includes(searchText.toLowerCase())
   );
 
+  const handleSearch = () => {
+    // Aquí colocas la lógica de búsqueda
+    const filteredVehicles = Carros.filter((vehicle) =>
+    vehicle.brand.toLowerCase().includes(searchText.toLowerCase()) ||
+    vehicle.model.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setSearchResults(filteredVehicles);
+  };
+
+  const handleFilterButtonPress = () => {
+    navigation.navigate('Filter'); // Asegúrate de navegar a la pantalla 'Filter'
+  };
+  
   return (
     <View style={styles.container}>
       {/* Barra de búsqueda con icono de lupa */}
@@ -37,10 +53,16 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={styles.filterButton}>
-          <Icon name="sliders" size={36} />
-        </TouchableOpacity>
+        <TouchableOpacity
+        style={styles.filterButton}
+        onPress={handleFilterButtonPress}
+      >
+         <Icon name="sliders" size={24} color="black" />
+
+      </TouchableOpacity>
+
       </View>
+
 
       {/* Título "Vehículos disponibles" */}
       <Text style={styles.title}>Vehículos disponibles</Text>
